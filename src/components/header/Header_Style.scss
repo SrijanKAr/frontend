@@ -70,11 +70,51 @@
           border: none;
           outline: none;
         }
-
+        .search_text {
+          color: lightslategray;
+          cursor: pointer;
+        }
         .search_calender {
           position: absolute;
           top: 60px;
           box-shadow: 0px 2px 10px rgb(129, 129, 129);
+        }
+        .options {
+          position: absolute;
+          top: 60px;
+          background-color: #fff;
+          color: grey;
+          border-radius: 5px;
+          -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
+
+          .option_item {
+            width: 250px;
+            display: flex;
+            justify-content: space-between;
+            margin: 10px;
+
+            .option_counter {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              font-size: 12px;
+              color: #000;
+
+              .option_conter_btn {
+                width: 30px;
+                height: 30px;
+                border: 1px solid #0f766a;
+                background-color: #0f766a;
+                color: #fff;
+                cursor: pointer;
+                border-radius: 5px;
+              }
+              .option_conter_btn:disabled {
+                cursor: not-allowed;
+              }
+            }
+          }
         }
       }
     }

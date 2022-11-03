@@ -23,6 +23,22 @@ const Header_Index = () => {
       key: 'selection',
     },
   ]);
+  const [openOption, setOpenOption] = useState(false);
+
+  const [options, setOptions] = useState({
+    adult: 1,
+    children: 0,
+    room: 1,
+  });
+
+  const handleChange = (name, operation) => {
+    setOptions((prev) => {
+      return {
+        ...prev,
+        [name]: operation === 'inc' ? options[name] + 1 : options[name] - 1,
+      };
+    });
+  };
   return (
     <div className="header">
       <div className="header_container">
@@ -87,8 +103,82 @@ const Header_Index = () => {
             )}
           </div>
           <div className="search_item">
-            <FontAwesomeIcon icon={faPerson} className="header_icon" />
-            <span className="search_text">2 adults 2 children 1 room</span>
+            <FontAwesomeIcon
+              icon={faPerson}
+              onClick={() => setOpenOption(!openOption)}
+              className="header_icon"
+            />
+            <span
+              onClick={() => setOpenOption(!openOption)}
+              className="search_text"
+            >{`${options.adult} adult - ${options.children} children - ${options.room} room`}</span>
+            {openOption && (
+              <div className="options">
+                <div className="option_item">
+                  <span className="option_text">Adult</span>
+                  <div className="option_counter">
+                    <button
+                      disabled={options.adult <= 1}
+                      className="option_conter_btn"
+                      onClick={() => handleChange('adult', 'dec')}
+                    >
+                      -
+                    </button>
+                    <span className="option_counter_number">
+                      {options.adult}
+                    </span>
+                    <button
+                      className="option_conter_btn"
+                      onClick={() => handleChange('adult', 'inc')}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div className="option_item">
+                  <span className="option_text">Children</span>
+                  <div className="option_counter">
+                    <button
+                      disabled={options.children <= 0}
+                      className="option_conter_btn"
+                      onClick={() => handleChange('children', 'dec')}
+                    >
+                      -
+                    </button>
+                    <span className="option_counter_number">
+                      {options.children}
+                    </span>
+                    <button
+                      className="option_conter_btn"
+                      onClick={() => handleChange('children', 'inc')}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div className="option_item">
+                  <span className="option_text">Room</span>
+                  <div className="option_counter">
+                    <button
+                      disabled={options.room <= 1}
+                      className="option_conter_btn"
+                      onClick={() => handleChange('room', 'dec')}
+                    >
+                      -
+                    </button>
+                    <span className="option_counter_number">
+                      {options.room}
+                    </span>
+                    <button
+                      className="option_conter_btn"
+                      onClick={() => handleChange('room', 'inc')}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="search_item">
             <button className="header_btn">Search</button>
