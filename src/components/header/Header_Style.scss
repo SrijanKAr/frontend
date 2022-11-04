@@ -3,12 +3,11 @@
   color: #fff;
   display: flex;
   justify-content: center;
-  height: 230px;
   position: relative;
   .header_container {
     width: 100%;
     max-width: 1024px;
-    margin: 20px 0px 10px 0px;
+    margin: 10px 0px 50px 0px;
 
     .header_list {
       display: flex;
@@ -43,7 +42,7 @@
     }
     .search_container {
       margin: 5px;
-      height: 60px;
+      height: 50px;
       background-color: #fff;
       border: 3px solid #faf2db;
       display: flex;
@@ -53,7 +52,7 @@
       padding: 10px 0px;
       border-radius: 5px;
       position: absolute;
-      bottom: -35px;
+      bottom: -25px;
       width: 100%;
       max-width: 1024px;
 
@@ -118,5 +117,8 @@
         }
       }
     }
+  }
+  .header_container .list_mode {
+    margin: 10px 0px 0px 0px;
   }
 }
